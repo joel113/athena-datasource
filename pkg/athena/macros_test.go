@@ -119,6 +119,19 @@ func Test_macros(t *testing.T) {
 			nil,
 		},
 		{
+			"raw time with 'at'",
+			"rawTimeFrom",
+			&sqlds.Query{
+				TimeRange: backend.TimeRange{
+					From: time.Date(2021, 6, 23, 1, 15, 30, 0, &time.Location{}),
+					To:   time.Date(2021, 6, 23, 2, 0, 0, 0, &time.Location{}),
+				},
+			},
+			[]string{"yyyy.MM.dd G 'at' HH:mm:ss z"},
+			`'2021.06.23 AD 'at' 01:15:30 UTC`,
+			nil,
+		},
+		{
 			"time from filter",
 			"timeFrom",
 			&sqlds.Query{
